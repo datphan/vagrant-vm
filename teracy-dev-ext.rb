@@ -3,4 +3,4 @@ $LOAD_PATH.unshift(lib_dir) unless $LOAD_PATH.include?(lib_dir)
 
 require 'vm'
 
-IoradVM.init
+VagrantVM.init

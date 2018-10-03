@@ -1,0 +1,9 @@
+vagrant-vm:
+  docker:
+    enabled: true
+    # entries:
+    #   - _id: "0"
+    #     host: registry.gitlab.com
+    #     force: false
+    #     username: <your username>
+    #     password: <your password>
