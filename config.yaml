@@ -8,9 +8,22 @@ vagrant-vm:
     #     username: <your username>
     #     password: <your password>
 
+  # to use VIRTUAL_HOST in any docker container
+  proxy:
+    enabled: false
+    name: nginx-proxy
+    image: jwilder/nginx-proxy:alpine
+    restart_policy: always
+    volumes:
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+      - /etc/nginx/certs:/etc/nginx/certs
+    port:
+      - 80:80
+      - 443:443
+
   # to use inside the VM
   enviroment:
-    enabled: true
+    enabled: false
     items:
       - _id: "0"
         prefix: 
@@ -19,7 +32,7 @@ vagrant-vm:
           KEY: "VALUE" # PREFIX_KEY_SUBIFX=VALUE
 
   template:
-    enabled: true
+    enabled: false
     items:
       - _id: "0"
         lookup: # default at extensions

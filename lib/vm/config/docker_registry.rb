@@ -18,16 +18,15 @@ module VagrantVM
         @docker_config['entries'].each do |entry|
             registry_host = entry['host']
 
-            username = entry['username']
-
-            password = entry['password']
-
-            force_login = entry['force']
-
             if !registry_host.nil?
                 config.vm.provision "shell",
                   run: "always",
-                  args: [registry_host.to_s, username.to_s, password.to_s, force_login.to_s],
+                  env: {
+                    'HOST' => registry_host.to_s, 
+                    'USERNAME' => entry['username'].to_s,
+                    'PASSWORD' => entry['password'].to_s,
+                    'FORCE_LOGIN' => entry['force'].to_s,
+                  },
                   path: "#{@extension_lookup_path}/vagrant-vm/shell/login_docker.sh",
                   name: "Login for #{registry_host}"
             end

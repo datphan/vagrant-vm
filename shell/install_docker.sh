@@ -29,7 +29,3 @@ if ! [ -x "$(command -v docker-compose)" ]; then
 
   docker-compose --version
 fi
-
-
-
-
