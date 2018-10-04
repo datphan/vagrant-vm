@@ -7,3 +7,23 @@ vagrant-vm:
     #     force: false
     #     username: <your username>
     #     password: <your password>
+
+  # to use inside the VM
+  enviroment:
+    enabled: true
+    items:
+      - _id: "0"
+        prefix: 
+        subfix: 
+        items:
+          KEY: "VALUE" # PREFIX_KEY_SUBIFX=VALUE
+
+  template:
+    enabled: true
+    items:
+      - _id: "0"
+        lookup: # default at extensions
+        filename: "vagrant-vm/templates/index.html.tpl" # your config file, index.html.tpl will be parsed to index.html
+        target: # default at VM $HOME:/home/vagrant
+        values:
+          name: vagrant # key/value pair
